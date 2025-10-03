@@ -62,4 +62,3 @@ wypisz("120", "co teraz", "jest,", "heja")
 
 
 
-
