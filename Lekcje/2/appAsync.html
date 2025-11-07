@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="clearInterval(window.idInterval)">Stop IdInterval</button>
+
+
+    <script>
+        pokazTimeout = () => console.log("Timeout nazwana")
+        setTimeout(pokazTimeout, 2000)
+
+        setTimeout(() => alert("Timeout anonimowa"), 3000)
+
+        window.idTimeout = setTimeout(() => console.log("hehe idtimeout"), 4000)
+        //clearTimeout(window.idTimeout)
+        window.idInterval = setInterval(() => console.log("hehe idinterval"), 5000)
+        //clearInterval(window.idInterval)
+
+        
+        
+
+    </script>
+
+
+
+
+</body>
+</html>
+
+
