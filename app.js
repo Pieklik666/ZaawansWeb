@@ -19,7 +19,7 @@ app
 				throw error;
 			}
 	
-			res.render("layoutMain", {nazwa: "Podawanie Danych", body: contentBody} , (error, contentMain) => {
+			res.render("layoutMain", {nazwa: "Podawanie Danych", body: contentBody, style: "<style>*{background-color: #A9D67B;}</style>"} , (error, contentMain) => {
 				if (error) {
 					console.log('[generujLayout]błąd renderowania ' + error);
 					throw error;
@@ -38,7 +38,7 @@ app
 				throw error;
 			}
 	
-			res.render("layoutMain", {nazwa: "Uzytkownik", body: contentBody} , (error, contentMain) => {
+			res.render("layoutMain", {nazwa: "Uzytkownik", body: contentBody, style: "<style>*{background-color: #7FFF00;}</style>"} , (error, contentMain) => {
 				if (error) {
 					console.log('[generujLayout]błąd renderowania ' + error);
 					throw error;
