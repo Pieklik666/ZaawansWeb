@@ -1,0 +1,5 @@
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force
+
+npm init
+
+npm install express ejs

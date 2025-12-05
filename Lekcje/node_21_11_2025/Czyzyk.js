@@ -17,16 +17,23 @@ emitter.emit('jakiesZdarzenie', 'parametr testowy')
 
 
 
-app.use(express.urlencoded({extended:true}));
+
+
+app.use(express.urlencoded({extended:true})); // by post obsługiwać 
 
 app
     .get('/', (req, res) => {
-        res.write('<html><form method="POST">Podaj miasto:<input type="text" name="miasto"/> <input type="submit"/> </form></html>')
+        res.write('<html><form method="POST">Podaj miasto:<input type="text" name="miasto"/> <input type="submit"/> </form>')
         res.end()
     })
     .post('/', (req, res) => {
-        res.write(req.body.miasto)
+        res.write('<html>Mieszkasz w czyms o nazwie: ' + req.body.miasto)
+        res.write('<form><input type="button" value="Kliknij"></form></html>')
+
         emitter.emit('jakiesZdarzenie', 'parametr testowy')
+
+        
+
         res.end()
     })
     .listen(PORT, () => {
