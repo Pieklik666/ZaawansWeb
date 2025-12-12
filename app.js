@@ -3,15 +3,20 @@ const express = require('express');
 const app = express()
 const PORT = 3000
 
-app.use(express.urlencoded({extended:true})); // by post obsługiwać 
+app.use(express.urlencoded({extended:true})); // by post obsługiwać
 
 
 
 app
-	.set('views', './') // określenie miejsca z którego mają być brane szablony
+	.set('views', './') // określenie miejsca z którego mają być brane szablony bo domyślnie byłoby w "/views"
 	.set('view engine', 'ejs') // włączenie silnika EJS
 
 
+	.use('/uzytkownik', (req, res, next) => { // use app middlewere
+		console.log('URL:', req.originalUrl)
+		next()
+	})
+	
     .get('/uzytkownik', (req, res) => {
 		res.render("layoutUzytkownik", {} , (error, contentBody) => {
 			if (error) {
@@ -49,9 +54,10 @@ app
 			});
 		});
 		
-    })
+	})
     .listen(PORT, () => {
         console.log("\nSerwer dziala na porcie " + PORT)
     });
+
 
 
