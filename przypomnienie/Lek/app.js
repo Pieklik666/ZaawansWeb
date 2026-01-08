@@ -2,15 +2,12 @@ const express = require('express');
 
 const app = express()
 const PORT = 3000
-
+//coś NIE DZIAŁA
 app.use(express.urlencoded({extended:true})); // by post obsługiwać
 
 
-
 app
-	.set('views', './') // określenie miejsca z którego mają być brane szablony bo domyślnie byłoby w "/views"
 	.set('view engine', 'ejs') // włączenie silnika EJS
-
 
 	.use('/uzytkownik', (req, res, next) => { // use app middlewere
 		console.log('URL:', req.originalUrl)
