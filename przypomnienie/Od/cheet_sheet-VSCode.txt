@@ -1,0 +1,78 @@
+komentarz					CTRL + /
+
+linie
+	zawijanie		 		ALT + Z
+	duplikowanie			SHIFT + ALT + GORA/DOL
+	przenoszenie w dół		ALT + DOL
+	przenoszenie w górę		ALT + GORA
+
+duplikowanie kursora		CTRL + SHIFT + ALT + GORA/DOL
+							ALT + click
+
+lista plikow
+	aktywacja/deaktywacja	CTRL + SHIFT + E
+
+terminal
+	aktywacja/deaktywacja	CTRL + ~
+	utwórz nowy				CTRL + SHIFT + ~
+
+zwijanie/rozwijanie kodu
+	zwiń blok				CTRL+SHIFT+[
+	rozwiń blok				CTRL+SHIFT+]
+	zaczyna sztuczny blok	'#region nazwa'
+	kończy sztuczny blok	'#endregion'
+
+settings.json
+	plik z ustawieniami Visual Studio Code
+	lokalizacje:
+		%APPDATA%\Code\User\settings.json
+			Ustawienia globalne (dla wszystkich projektów)
+			ustawienia użytkownika, UI, globalne preferencje
+			najniższy priorytet
+		___KATALOG_PROJEKTU___\.vscodeHome\settings.json
+			ustawienia dla danej przestrzeni roboczej (workspace)
+			ustawienia zależne od folderu/workspace
+			priorytet wyższy niż globalne
+		___KATALOG_PROJEKTU___\.vscode\settings.json
+			ustawienia tylko dla danego projektu/wybranego katalogu
+	dodawanie gita do terminala
+		// w ścieżkach powinny być użyte powtórzone '\\'
+		"terminal.integrated.profiles.windows": {
+			"Git_Bash-dysk_z": {
+				"path": "Z:\\GitPortable\\bin\\bash.exe",	//	upewnij się że ścieżka się zgadza
+				"args": [
+					"--login"
+				],
+				"env": {
+					"TMUX": "false"
+				}
+			},
+			"Git Bash-AppData": {
+				"path": "${env:USERPROFILE}\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+				"args": [
+					"--login"
+				],
+				"env": {
+					"TMUX": "false"
+				}
+			},
+			"CMD": {
+				"path": "C:\\Windows\\System32\\cmd.exe"
+			}
+		},
+		"terminal.integrated.defaultProfile.windows": "Git_Bash-dysk_z",
+		"terminal.integrated.automationShell.windows": "Git_Bash-dysk_z",
+	dodawanie zawijania wierszy
+		"editor.wordWrap": "on",
+	wyłączanie minimapy
+		"editor.minimap.enabled": false,
+	wcięcia w postaci tabulacji
+		"editor.indentSize": "tabSize",
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+	ustawienia tylko dla danego języka (np. yaml)
+		"[yaml]": {
+			"editor.tabSize": 4,
+			"editor.insertSpaces": false,
+			"editor.autoIndent": "advanced"
+		},

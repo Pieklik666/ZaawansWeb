@@ -1,55 +1,48 @@
-import {MongoClient} from 'mongodb';
+import mongoose from 'mongoose';
 
-async function polaczenie_i_tworzenie() {
-	const uri = "mongodb://localhost:27017";
-    const client = new MongoClient(uri);
+const URI = 'mongodb://localhost:27017/szkola';
 
+async function polaczZBaza() {
 	try {
-		await client.connect();
-        const database = client.db("lekcja_mongodb");
-        database.createCollection("produkty");
-		const collection = database.collection("produkty");
+		await mongoose.connect(URI);
+		console.log('Połączono z bazą szkola');
 
-		// Tworzenie dokumentu
-		const nowyProdukt = {
-			nazwa: "telegraf",
-			cena: 323.99,
-			zapas: 31,
-		};
+		const nauczycieleSchema = new mongoose.Schema({
+			imie:{ 
+				type:String, 
+				required: true
+			},			
+			przedmiot: {
+				type:String,
+				required: true
+			},		
+			doswiadczenie: {
+				type:Number,
+				default: 0
+			},			
+			zatrudniony: {
+				type:Boolean,
+				default: true
+			}		
+		});
 
-		let wynik = await collection.insertOne(nowyProdukt);
-        console.log("Dokument dodany z ID:", wynik.insertedId);
-        
-        const nowyProdukt2 = {
-			nazwa: "destylator",
-			cena: 132.99,
-			zapas: 321,
-        };
-        const nowyProduk3 = {
-			nazwa: "globus",
-			cena: 32.99,
-			zapas: 0,
-        };
+		const Nauczyciel = mongoose.model('usuarios', nauczycieleSchema);
+		
+		const nowyNauczyciel = new Nauczyciel({
+			imie: 'Anna',
+			przedmiot: 'Matematyka',
+			doswiadczenie: 5,
+			zatrudniony: true
+		});
 
-		wynik = await collection.insertMany([nowyProdukt2, nowyProduk3]);
+		nowyNauczyciel.save();
 
-
-
-
-
-        const wszystkie = await collection.find({}).toArray();
-		console.log("Wszystkie produkty:", wszystkie);
-
-        wynik = await collection.find({ cena: { $gt: 100 } }).toArray();
-        console.log("Produkty drozsze niz 100zl:", wynik);
-        
-        const ile = await collection.countDocuments();
-		console.log("Ilosc produktow:", ile);
-
-
-        await collection.drop();
-	} finally {
-		await client.close();
+		return Nauczyciel;
+		
+	} catch (blad) {
+		console.log('Nie można połączyć się z bazą:', blad.message);
+		process.exit(1);
 	}
 }
-polaczenie_i_tworzenie();
+
+polaczZBaza();
