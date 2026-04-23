@@ -37,27 +37,14 @@ const zadanie3 = () => {
                 },
                 message: 'Ocena musi być z przedziału [1,6]'
             }
-        },
-        dataWystawienia: {
-            type: Date,
-            default: Date.now
-        },
-        nauczyciel: {
-            type: String,
-            required: true
-        },
-        uwagi: String,
-        wagaOceny: {
-            type: Number,
-            default: 1,
-            validate: {
-                validator: function(waga){
-                    return waga>=0.5 && waga<=3;
-                },
-                message: 'Waga oceny musi być w przedziale [0.5 ; 3]'
-            }
         }
-        
     })
+
     const Ocena = mongoose.model('Ocena',ocenyuczniaSchema)
+
+
+    
+
+
+
 };

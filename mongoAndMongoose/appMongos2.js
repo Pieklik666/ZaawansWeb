@@ -37,6 +37,8 @@ async function polaczZBaza() {
 
 		nowyNauczyciel.save();
 
+		console.log(Nauczyciel);
+
 		return Nauczyciel;
 		
 	} catch (blad) {
