@@ -1,0 +1,26 @@
+{
+	"name": "szkoly",
+	"version": "1.0.0",
+	"description": "",
+	"license": "ISC",
+	"author": "Michal Wolek",
+	"type": "module",
+	"main": "index.js",
+	"scripts": {
+		"start": "node ./index.js",
+		"dev": "node --watch ./index.js",
+		"watch-folder": "copy-and-watch --watch \"{modele,routery}/*.{js,json}\" ~/zajecia/node/",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"cors": "^2.8.6",
+		"express": "^5.2.1",
+		"express-flash": "^0.0.2",
+		"express-session": "^1.19.0",
+		"mongodb": "^7.2.0",
+		"mongoose": "^9.6.2"
+	},
+	"devDependencies": {
+		"copy-and-watch": "^0.1.7"
+	}
+}

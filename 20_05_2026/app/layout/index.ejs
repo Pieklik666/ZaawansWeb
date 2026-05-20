@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>System zarządzania szkołami</title>
+	<link rel="stylesheet" href="/style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+	<h1>
+		<% if (selectedSchoolId) { %>
+			Zarządzanie szkołą <%= selectedSchoolName %> (ID: <%= selectedSchoolId %>)
+				<a href="/szkoly/clear" title="Wyczyść wybór szkoły"><i class="fas fa-times"></i></a>
+		<% } else { %>
+			System zarządzania szkołami
+		<% } %>
+	</h1>
+	<div class="container">
+		<div class="left-panel">
+			<nav>
+				<ul>
+					<li>
+						<%= szkolySelect %>
+						<ul>
+							<% if (selectedSchoolId) { %>
+								<li><a href="/szkoly/details"><i class="fas fa-info-circle"></i> &nbsp; &nbsp; Szczegóły
+										szkoły</a></li>
+								<li><a href="/klasy/list"><i class="fas fa-users"></i> &nbsp; &nbsp; Klasy</a></li>
+								<li><a href="/lekcje/list"><i class="fas fa-clock"></i> &nbsp; &nbsp; Lekcje</a></li>
+								<li><a href="/nauczyciele/szkola/list"><i class="fas fa-chalkboard-teacher"></i> &nbsp;
+										&nbsp; Nauczyciele</a></li>
+								<li><a href="/przedmioty/szkola/list"><i class="fas fa-book"></i> &nbsp; &nbsp;
+										Przedmioty</a></li>
+								<li><a href="/sale/list"><i class="fas fa-door-open"></i> &nbsp; &nbsp; Sale</a></li>
+								<li><a href="/uczniowie/szkola/list"><i class="fas fa-user-graduate"></i> &nbsp; &nbsp;
+										Uczniowie</a></li>
+							<% } %>
+						</ul>
+					</li>
+					<li><a href="/nauczyciele/list"><i class="fas fa-chalkboard-teacher"></i> &nbsp; &nbsp;
+							Nauczyciele</a></li>
+					<li><a href="/profile-klas/list"><i class="fas fa-chalkboard-teacher"></i> &nbsp; &nbsp; Profile
+							klas</a></li>
+					<li><a href="/przedmioty/list"><i class="fas fa-book"></i> &nbsp; &nbsp; Przedmioty</a></li>
+					<li><a href="/typy-sal/list"><i class="fas fa-chalkboard-teacher"></i> &nbsp; &nbsp; Typy sal</a>
+					</li>
+					<li><a href="/typy-tablic/list"><i class="fas fa-chalkboard-teacher"></i> &nbsp; &nbsp; Typy
+							tablic</a></li>
+					<li><a href="/uczniowie/list"><i class="fas fa-user-graduate"></i> &nbsp; &nbsp; Uczniowie</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="right-panel">
+			<div id="content">
+				<%- if (flashError.length) { %>
+					<div class="error"><%- flashError %></div>
+				<% } %>
+				<%- if (flashSuccess.length) { %>
+					<div class="success"><%- flashSuccess %></div>
+				<% } %>
+
+				<%- content %>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
