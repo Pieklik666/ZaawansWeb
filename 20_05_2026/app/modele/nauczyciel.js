@@ -61,7 +61,7 @@ export async function nauczycielZnajdz(pole, wartosc) {
 }
 
 
-export async function nauczycielDodaj(imie,nazwisko,email,aktywny,wiek,id_klasy) { //niezrobione
+export async function nauczycielDodaj(imie,nazwisko,email,aktywny,doswiadczenie,id_szkoly) {
 	try {
 		const wynik = await NauczycielModel.findOne({ email });
 		if (wynik) {
@@ -70,9 +70,9 @@ export async function nauczycielDodaj(imie,nazwisko,email,aktywny,wiek,id_klasy)
 			throw error;
 		}
 
-		const nowyUczen = await UczenModel.create({ imie, nazwisko, email, aktywny, wiek, id_klasy });
+		const nowyNauczyciel = await NauczycielModel.create({imie,nazwisko,email,aktywny,doswiadczenie,id_szkoly});
 
-		return nowyUczen;
+		return nowyNauczyciel;
 	} catch (error) {
 		console.log('Błąd podczas dodawania:', error.message);
 		throw error;
