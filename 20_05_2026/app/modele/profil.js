@@ -54,3 +54,22 @@ export async function profilZnajdz(pole, wartosc) {
 		throw error;
 	}
 }
+
+
+export async function profilDodaj(nazwa) {
+	try {
+		const wynik = await ProfilModel.findOne({ nazwa });
+		if (wynik) {
+			const error = new Error(`Profil o nazwie '${nazwa}' już istnieje.`);
+			error.statusCode = 409;
+			throw error;
+		}
+
+		const nowyProfil = await ProfilModel.create({ nazwa });
+
+		return nowyProfil;
+	} catch (error) {
+		console.log('Błąd podczas dodawania:', error.message);
+		throw error;
+	}
+}

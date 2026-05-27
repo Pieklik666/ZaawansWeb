@@ -59,3 +59,22 @@ export async function nauczycielZnajdz(pole, wartosc) {
 		throw error;
 	}
 }
+
+
+export async function nauczycielDodaj(imie,nazwisko,email,aktywny,wiek,id_klasy) { //niezrobione
+	try {
+		const wynik = await NauczycielModel.findOne({ email });
+		if (wynik) {
+			const error = new Error(`Nauczyciel o emailu '${email}' już istnieje.`);
+			error.statusCode = 409;
+			throw error;
+		}
+
+		const nowyUczen = await UczenModel.create({ imie, nazwisko, email, aktywny, wiek, id_klasy });
+
+		return nowyUczen;
+	} catch (error) {
+		console.log('Błąd podczas dodawania:', error.message);
+		throw error;
+	}
+}

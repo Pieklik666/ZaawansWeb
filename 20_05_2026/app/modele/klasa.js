@@ -57,3 +57,14 @@ export async function klasaZnajdz(pole, wartosc) {
 		throw error;
 	}
 }
+
+export async function klasaDodaj( nazwa,id_szkoly,id_profilu,id_wychowawcy) {
+	try {
+		const nowaKlasa = await KlasaModel.create({ nazwa,id_szkoly,id_profilu,id_wychowawcy });
+
+		return nowyUczen;
+	} catch (error) {
+		console.log('Błąd podczas dodawania:', error.message);
+		throw error;
+	}
+}

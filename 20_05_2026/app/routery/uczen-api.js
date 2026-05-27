@@ -1,6 +1,6 @@
 import express from 'express';
 import { szkolyConnect, szkolyDisconnect } from '../modele/db.js';
-import { uczenLista, uczenPobierz, uczenZnajdz } from '../modele/uczen.js';
+import { uczenLista, uczenPobierz, uczenZnajdz, uczenDodaj } from '../modele/uczen.js';
 
 const UczenRouter = express.Router();
 
@@ -43,6 +43,20 @@ UczenRouter
 		} finally {
 			await szkolyDisconnect();
 		}
-	});
+	})
+	.post('/', async (req, res) => {
+				try {
+					await szkolyConnect();
+		
+					const nowyElement = await uczenDodaj(req.body.imie, req.body.nazwisko, req.body.email, req.body.aktywny, req.body.wiek, req.body.id_klasy);
+		
+					res.status(201).json(nowyElement);
+				} catch (error) {
+					console.log('Błąd podczas dodawania:', error.message);
+					res.status(error.statusCode || 500).json({ message: error.message });
+				} finally {
+					await szkolyDisconnect();
+				}
+			});
 
 export default UczenRouter;
