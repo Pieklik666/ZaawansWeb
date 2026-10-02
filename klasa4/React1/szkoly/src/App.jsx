@@ -1,15 +1,16 @@
-import { useState } from 'react'
 
-import ZmienMotyw from './zadanie-1.jsx'
-import InputLengthChange from './zadanie-cw.jsx'
+import ZegarCyfrowy from './zadanie-1'
+import PowitanieZBazy from './zadanie-2'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
+//      
   return (
     <>
-      <ZmienMotyw />
-      <InputLengthChange />
+      <ZegarCyfrowy /> <br/>
+      <PowitanieZBazy />
     </>
   )
 }

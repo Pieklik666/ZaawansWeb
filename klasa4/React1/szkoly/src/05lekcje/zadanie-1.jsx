@@ -19,7 +19,7 @@ function ZmienMotyw(){
                     setKolor('#fff')
                 }
 
-            }}></button>
+            }}>Zmien Motyw</button>
         </>
     )
 }
