@@ -1,19 +1,16 @@
-import { useEffect, useState } from "react";
 
 
-function PowitanieZBazy(){
-    const [imie, setImie] = useState('Nieznajomy');
+function PrzyciskZapisz({czyZapisano, onZapis}){
+    
 
-    useEffect(()=>{
-        setImie(localStorage.getItem('imie-ucznia'))
-    }, []);
-
-    return(<>
-        Witaj {imie}
-        <input type="text" id="imie" onChange={(event) => setImie(event.target.value)} />
-        <button onClick={()=>{
-            localStorage.setItem('imie-ucznia', imie);
-        }}>klik</button>
-    </>)
+    return(
+        <>
+            {czyZapisano
+                ? (<>Zmiany zostały zapisane</>)
+                : (<button onClick={onZapis}>Zapisz zmiany</button> )
+            }
+        </>
+    )
 }
-export default PowitanieZBazy
+
+export default PrzyciskZapisz

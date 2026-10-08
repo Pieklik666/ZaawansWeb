@@ -1,23 +1,12 @@
-import { useState, useEffect } from "react"
 
-function ZegarCyfrowy(){
-    const [czas, setCzas] = useState(new Date().getTime())
+function InfoUczen({imie, czyObecny, numerDziennika}){
 
-    
-	useEffect(() => {
-    	const interval = setInterval(() => {
-			setCzas(czas + 1000);
-		}, 1000);
-        
-		return () => {
-			clearInterval(interval);
-		};
-	});
-    
-    return (
+    return(
         <>
-            Czas: {new Date(czas).toLocaleTimeString()}
+            {numerDziennika}. {imie}
+            {czyObecny && " (Obecny)"}
+            {!czyObecny && " (Nieobecny)"}
         </>
     )
 }
-export default ZegarCyfrowy
+export default InfoUczen
