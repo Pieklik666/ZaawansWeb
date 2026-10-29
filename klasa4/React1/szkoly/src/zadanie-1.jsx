@@ -1,11 +1,17 @@
+import { useState } from "react"
 
-function ListaPrzedmiotow(){
-    const przedmioty = ("Matematyka", "Polski", Angielski, Historia, Fizyka, Chemia, Biologia)
 
-    return (
-        <>
-            <h1>hej</h1>
-        </>
-    )
+function FormularzImienia(){
+    const [imieState, setImieState] = useState(null)
+
+    function onChange(e){
+        setImieState(e.target.value)
+    }
+
+    return(<>
+        <input type="text" onChange={onChange}/>
+        Witaj {imieState ? imieState : "Wpisz swoje imię"}
+    </>)
 }
-export default ListaPrzedmiotow
+
+export default FormularzImienia

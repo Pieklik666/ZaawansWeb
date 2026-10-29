@@ -1,11 +1,13 @@
-import ListaPrzedmiotow from "./zadanie-1.jsx"
+import FormularzImienia from "./zadanie-1"
+import FormularzOceniania from "./zadanie-2"
 
 
 function App() {
 
   return (
     <>
-      <ListaPrzedmiotow></ListaPrzedmiotow>
+      <FormularzImienia/>
+      <FormularzOceniania/>
     </>
   )
 }
