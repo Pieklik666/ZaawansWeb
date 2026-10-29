@@ -525,9 +525,7 @@ function DaneSzkolne({ klasaId }) {
 */
 
 
-/*	Zadanie 3 - Średnie (kombinacja metod)
-	Stwórz komponent 'KartaUcznia', który przyjmuje props:
-	- imie (string)
+/*
 	- klasa (string)
 	- srednia (number)
 	- czyAktywny (boolean)

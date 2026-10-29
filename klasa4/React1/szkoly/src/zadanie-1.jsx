@@ -1,12 +1,11 @@
 
-function InfoUczen({imie, czyObecny, numerDziennika}){
+function ListaPrzedmiotow(){
+    const przedmioty = ("Matematyka", "Polski", Angielski, Historia, Fizyka, Chemia, Biologia)
 
-    return(
+    return (
         <>
-            {numerDziennika}. {imie}
-            {czyObecny && " (Obecny)"}
-            {!czyObecny && " (Nieobecny)"}
+            <h1>hej</h1>
         </>
     )
 }
-export default InfoUczen
+export default ListaPrzedmiotow

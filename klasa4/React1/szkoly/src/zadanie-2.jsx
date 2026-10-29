@@ -1,16 +1,11 @@
 
+function Zad2(){
 
-function PrzyciskZapisz({czyZapisano, onZapis}){
     
-
-    return(
+    return (
         <>
-            {czyZapisano
-                ? (<>Zmiany zostały zapisane</>)
-                : (<button onClick={onZapis}>Zapisz zmiany</button> )
-            }
+
         </>
     )
 }
-
-export default PrzyciskZapisz
+export default Zad1
