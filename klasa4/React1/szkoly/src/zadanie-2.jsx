@@ -1,44 +1,41 @@
-import { useState } from "react"
+import { useState } from "react";
 
-function formularzOceniania(){
-    const [oceny, setOceny] = useState(null)
-    const [imieOrazNazwisko, setImieOrazNazwisko] = useState(null)
+function useCounter(start = 0, min = 0, max = 0, krok = 1) {
+    const [licznik, setLicznik] = useState(start);
 
-
-    function formSubmit(e){
-        e.preventDefault()
-
+    function zwieksz() {
+        if(licznik + krok <= max) {
+            return <button onClick={() => setLicznik(licznik + krok)}>+</button>
+        }
+        else{
+            return <button disabled={true}>+</button>
+        }
+    }
+    function zmniejsz() {
+        if(licznik - krok >= min) {
+            return <button onClick={() => setLicznik(licznik - krok)}>-</button>
+        }
+        else{
+            return <button disabled={true}>-</button>
+        }
+    }
+    function resetuj(){
+        setLicznik(0)
     }
 
-    return(<>
-        <form onSubmit={formSubmit}>
-            <label htmlFor="imieNazwisko">Podaj Imie i Nazwisko</label>
-            <input type="text" id="imieNazwisko"/>
-            <select name="selectOcena" id="selectOcena">
-                <option value={1}>1</option>
-                <option value={1}>2</option>
-                <option value={1}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-            </select>
+    return [licznik, zwieksz, zmniejsz, resetuj];
+}
 
-            <select name="selectPrzedmiot" id="selectPrzedmiot">
-                <option value="matematyka">matematyka</option>
-                <option value="polski">polski</option>
-                <option value="angielski">angielski</option>
-                <option value="historia">historia</option>
-                <option value="biologia">biologia</option>
-            </select>
-        </form>
+function CounterCustomHook() {
+    const [licznik, zwieksz, zmniejsz, resetuj] = useCounter(0, 0, 35, 1)
+
+    return(<>
+        {zwieksz()}
+        Aktualna ilość uczniów: {licznik}
+        {zmniejsz()}
         
-        Lista Ocen: 
-        {
-            oceny.forEach(element => {
-                return("[Imie Nazwisko] - [Przedmiot]: {ocena}")
-            });
-        }
+        <button onClick={resetuj}>Reset</button>
     </>)
 }
 
-export default formularzOceniania
+export default CounterCustomHook

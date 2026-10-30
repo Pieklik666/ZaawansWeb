@@ -1,17 +1,24 @@
 import { useState } from "react"
 
+function useToggle(initial = false){
+    const [toggled, setToggled] = useState(initial)
 
-function FormularzImienia(){
-    const [imieState, setImieState] = useState(null)
-
-    function onChange(e){
-        setImieState(e.target.value)
+    function toggle(){
+        setToggled(!toggled)
     }
 
+    return([toggled, toggle])
+}
+
+function PrzelacznikWidoku(){
+    const [widoczny, toggle] = useToggle()
+
+
     return(<>
-        <input type="text" onChange={onChange}/>
-        Witaj {imieState ? imieState : "Wpisz swoje imię"}
+        <button onClick={toggle}>{widoczny ? "Ukryj szczegóły" : "Pokaż szczegóły"}</button>
+
+        {widoczny && "Szczegóły uczniów tutaj"}
     </>)
 }
 
-export default FormularzImienia
+export default PrzelacznikWidoku
