@@ -1,0 +1,111 @@
+{
+	"[txt]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
+		"editor.autoIndent": "advanced"
+	},
+	"[yaml]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": false,
+		"editor.autoIndent": "advanced"
+	},
+	"editor.accessibilityPageSize": 5000,
+	"editor.autoIndent": "advanced",
+	"editor.autoIndentOnPaste": true,
+	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+	"editor.detectIndentation": false,
+	"editor.indentSize": "tabSize",
+	"editor.insertSpaces": false,
+	"editor.minimap.enabled": false,
+	"editor.tabSize": 4,
+	"editor.wordWrap": "on",
+	"editor.renderWhitespace": "selection",
+	"editor.rulers": [80],
+	"emmet.includeLanguages": {
+		"ejs": "html"
+	},
+	"files.eol": "\n",
+	"files.insertFinalNewline": false,
+	"files.trimFinalNewlines": true,
+	"files.trimTrailingWhitespace": true,
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": true
+	},
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"js/ts.updateImportsOnFileMove.enabled": "always",
+	"php.validate.executablePath": "C:\\xampp\\php\\php.exe",
+	"files.associations": {
+		"*.mq4": "mql-output",
+		"*.mq5": "mql-output",
+		"*.mqh": "mql-output"
+	},
+	"chat.viewSessions.orientation": "stacked",
+	"git.confirmSync": false,
+	"notebook.insertFinalNewline": false,
+	"terminal.integrated.profiles.windows": {
+		"PowerShell": {
+			"source": "PowerShell",
+			"icon": "terminal-powershell"
+		},
+		"Command Prompt": {
+			"path": [
+				"${env:windir}\\Sysnative\\cmd.exe",
+				"${env:windir}\\System32\\cmd.exe"
+			],
+			"args": [],
+			"icon": "terminal-cmd"
+		},
+		"Git Bash": {
+			"source": "Git Bash",
+			"icon": "terminal-git-bash",
+			"path": [
+				"C:\\Program Files\\Git\\bin\\bash.exe",
+				"${env:USERPROFILE}\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+				"C:\\Users\\12547896\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+				"C:\\Users\\${env:USERNAME}\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+				"\\\\zs1-s1\\Profile\\Pulpity\\12547896\\Moje dokumenty\\programy\\Git\\bin\\bash.exe",
+				"C:\\Users\\Micha\\AppData\\Local\\Programs\\Git\\bin\\bash.exe"
+			],
+			"args": [
+				"--login",
+				"-i"
+			],
+			"env": {
+				"TMUX": "false"
+			}
+		},
+		"Git Bash t1": {
+			"path": [
+				"C:\\Users\\12547896\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+				"C:\\Users\\12547896.ZS1PIASECZNO\\AppData\\Local\\Programs\\Git\\bin\\bash.exe",
+				"\\\\zs1-s1\\Profile\\Pulpity\\12547896\\Moje dokumenty\\programy\\Git\\bin\\bash.exe"
+			],
+			"args": [
+				"--login",
+				"-i"
+			],
+			"env": {
+				"TMUX": "false"
+			}
+		}
+	},
+	"terminal.integrated.shell.windows": "Git Bash",
+	"terminal.integrated.defaultProfile.windows": "Git Bash",
+	"terminal.integrated.automationShell.windows": "Git Bash",
+	"window.zoomLevel": 0,
+	"workbench.colorTheme": "Default High Contrast",
+	"workbench.preferredDarkColorTheme": "Default High Contrast",
+	"workbench.preferredLightColorTheme": "Default High Contrast Light",
+	"security.workspace.trust.untrustedFiles": "open",
+
+
+	"security.allowedUNCHosts": [
+		"zs1-s1"
+	],
+	"git.path": "\\\\zs1-s1\\Profile\\Pulpity\\12547896\\Moje dokumenty\\programy\\Git\\bin\\bash.exe"
+}
