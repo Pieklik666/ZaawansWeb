@@ -1,30 +1,60 @@
-import { memo, useCallback, useState } from "react"
+import { Provider, useDispatch, useSelector } from 'react-redux';
+import { configureStore, createSlice } from '@reduxjs/toolkit';
 
+const todosSlice = createSlice({
+    name: 'todos',
+    initialState: [{ id: 0, text: "defaultTodo", done: false }],
+    reducers: {
+        addTodo: (state, action) => {
+            state.push({
+                id: Date.now(),
+                text: action.payload,
+                done: false
+            });
+        },
+        toggleTodo: (state, action) => {
+            const todo = state.find(todo => todo.id === action.payload);
+            if (todo) { todo.done = !todo.done; }
+            else console.log("NIe istnieje")
+        },
+        removeTodo: (state, action) => {
+            return state.filter(todo => todo.id !== action.payload);
+        }
+    },
+});
 
-function Lista(){
-    const [lista, setLista] = useState(["el1","el2","el3","el4","el5","el6","e7",])
-    const [szkukane, setSzkane] = useState("")
+const { addTodo, toggleTodo, removeTodo } = todosSlice.actions;
+const store = configureStore({
+    reducer: {
+        todos: todosSlice.reducer
+    }
+});
 
-    const przefiltrowane = useCallback(() => {
-        console.log("Przefiltrowane re-render")
-        return (lista.filter((p) => p.includes(szkukane)))
-    }, [lista, szkukane])
+function TodoList() {
+    const todos = useSelector(state => state.todos);
+    const dispatch = useDispatch();
 
-    return(<>
-        Szukaj: <input type="text" onChange={(e) => setSzkane(e.target.value)}/>
+    return (<>
+        <button onClick={() => dispatch(addTodo("newTodo"))}> Dodaj </button>
+
         <ul>
-			{przefiltrowane().map((p) => (
-                <ElementListy key={p} nazwa={p}/>
-			))}
-		</ul>
-    </>)
+            {todos.map(todo => (
+                <li key={todo.id}>
+                    <button onClick={() => dispatch(toggleTodo(todo.id))}> Czy Zrobione: {todo.done ? "Tak" : "Nie"} </button> - {todo.text}
+        
+                    <button onClick={() => dispatch(removeTodo(todo.id))}> Usuń </button>
+                </li>
+            ))}
+        </ul>
+    </>);
 }
 
-const ElementListy = memo(function ElementListy({nazwa}){
-    console.log("ElementListy re-render") // renderuje sie tylko gdy sie wyswietla, nie gdy znika lub zostaje jak jest
-    return(<>
-        <li key={nazwa}>Element: {nazwa}</li>
-    </>)
-})
+function Zadanie2() {
+    return (
+        <Provider store={store}>
+            <TodoList />
+        </Provider>
+    );
+}
 
-export default Lista
+export default Zadanie2;

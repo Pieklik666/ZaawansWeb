@@ -1,16 +1,14 @@
-import Licznik from "./zadanie-1"
-import Lista from "./zadanie-3" //zadanie-2 nie ma statystyk, zadanie-3 ma statystyki, nazwa importu taka sama
+import Zadanie1 from "./zadanie-1";
+import Zadanie2 from "./zadanie-2";
+
 
 function App() {
-
-  return (
-    <>
-
-      <Licznik/>
-      <Lista/>
-
-    </>
-  )
+	return (
+		<>
+			<Zadanie1/> <br /> <br /> <br />
+			<Zadanie2/>
+		</>
+	);
 }
 
-export default App
+export default App;

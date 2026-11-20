@@ -1,17 +1,20 @@
-import { useCallback, useState } from "react"
+import {create} from "zustand"
 
-function Licznik(){
-    console.log("Licznik re-render")
-    const [licznik, setLicznik] = useState(0)
+const useLicznikStore = create((set) => ({
+	count: 10,
+	decrement: () => set((state) => ({ 
+		count: (state.count > 0) ? state.count - 1 : state.count
+	})),
+}));
 
-    const zwieksz = useCallback(() => {
-        setLicznik(licznik + 1)
-    }, [licznik])
+function Zadanie1() {
+	const licznik = useLicznikStore((state) => state.count)
+	const zmniejsz = useLicznikStore((state) => state.decrement)
 
-    return(<>
-        {licznik}
-        <button onClick={zwieksz}>+1</button> 
-    </>)
+	return (<>
+		{licznik}
+		<button onClick={zmniejsz}>-</button>
+	</>);
 }
 
-export default Licznik
+export default Zadanie1;
